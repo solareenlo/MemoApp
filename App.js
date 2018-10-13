@@ -46,10 +46,30 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 90,
+      backgroundColor: '#FFFDF6',
   },
+    memoList: {
+        width: '100%',
+        flex: 1,
+        //backgroundColor: '#eee',
+    },
+    memoListItem: {
+        padding: 16,
+        borderBottomWidth: 1,
+        borderBottomColor: '#aaa',
+        backgroundColor: '#fff',
+    },
+    memoTitle: {
+        fontSize: 18,
+        marginBottom: 4,
+    },
+    memoDate: {
+        fontSize: 12,
+        color: '#a2a2a2',
+    },
     appbar: {
         position: 'absolute',
         top: 0,
@@ -60,6 +80,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#D8D8D8',
         justifyContent: 'center',
         alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 0},
+        shadowOpacity: 0.9,
+        shadowRadius: 3,
+        zIndex: 10,
     },
     appbarTitle: {
         color: '#fff',
