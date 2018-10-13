@@ -1,43 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import MemoList from './src/components/MemoList';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-
         <View style={styles.appbar}>
             <View>
                 <Text style={styles.appbarTitle}>MEMODASU</Text>
             </View>
         </View>
 
-        <View style={styles.memoList}>
-            <View style={styles.memoListItem}>
-                <Text style={styles.memoTitle}>アプリのアイディア</Text>
-                <Text style={styles.memoDate}>2018.10.10</Text>
-            </View>
-
-            <View style={styles.memoListItem}>
-                <Text style={styles.memoTitle}>アプリのアイディア</Text>
-                <Text style={styles.memoDate}>2018.10.10</Text>
-            </View>
-
-            <View style={styles.memoListItem}>
-                <Text style={styles.memoTitle}>アプリのアイディア</Text>
-                <Text style={styles.memoDate}>2018.10.10</Text>
-            </View>
-
-            <View style={styles.memoListItem}>
-                <Text style={styles.memoTitle}>アプリのアイディア</Text>
-                <Text style={styles.memoDate}>2018.10.10</Text>
-            </View>
-
-            <View style={styles.memoListItem}>
-                <Text style={styles.memoTitle}>アプリのアイディア</Text>
-                <Text style={styles.memoDate}>2018.10.10</Text>
-            </View>
-        </View>
+        <MemoList />
 
         <View style={styles.memoAddButton}>
             <Text style={styles.memoAddButtonTitle}>+</Text>
@@ -48,52 +23,12 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 90,
-      backgroundColor: '#FFFDF6',
-  },
-    memoAddButton: {
-        position: 'absolute',
-        bottom: 32,
-        right: 32,
-        width: 48,
-        height: 48,
-        backgroundColor: '#ff5976',
-        borderRadius: 24,
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        shadowRadius: 3,
-        zIndex: 10,
-    },
-    memoAddButtonTitle: {
-        fontSize: 36,
-        lineHeight: 36,
-        color: '#fff',
-    },
-    memoList: {
-        width: '100%',
+    container: {
         flex: 1,
-        //backgroundColor: '#eee',
-    },
-    memoListItem: {
-        padding: 16,
-        borderBottomWidth: 1,
-        borderBottomColor: '#aaa',
-        backgroundColor: '#fff',
-    },
-    memoTitle: {
-        fontSize: 18,
-        marginBottom: 4,
-    },
-    memoDate: {
-        fontSize: 12,
-        color: '#a2a2a2',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 90,
+        backgroundColor: '#FFFDF6',
     },
     appbar: {
         position: 'absolute',
@@ -114,5 +49,26 @@ const styles = StyleSheet.create({
     appbarTitle: {
         color: '#fff',
         fontSize: 24,
+    },
+    memoAddButton: {
+        position: 'absolute',
+        bottom: 32,
+        right: 32,
+        width: 48,
+        height: 48,
+        backgroundColor: '#ff5976',
+        borderRadius: 24,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.9,
+        shadowRadius: 3,
+        zIndex: 10,
+    },
+    memoAddButtonTitle: {
+        fontSize: 36,
+        lineHeight: 36,
+        color: '#fff',
     },
 });
