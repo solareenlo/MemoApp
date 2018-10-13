@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Appbar from './src/components/Appbar';
-import LoginScreen from './src/screens/LoginScreen';
+import SignupScreen from './src/screens/SignupScreen';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Appbar />
-        <LoginScreen />
+        <SignupScreen />
       </View>
     );
   }
