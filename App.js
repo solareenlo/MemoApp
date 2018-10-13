@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Appbar from './src/components/Appbar';
 import MemoList from './src/components/MemoList';
+import CircleButton from './src/elements/CircleButton';
 
 export default class App extends React.Component {
   render() {
@@ -10,9 +11,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Appbar />
         <MemoList />
-        <View style={styles.memoAddButton}>
-            <Text style={styles.memoAddButtonTitle}>+</Text>
-        </View>
+        <CircleButton>+</CircleButton>
       </View>
     );
   }
