@@ -29,7 +29,7 @@ class CircleButton extends React.Component {
                 {
                     this.state.fontLoaded ? (
                         <Text style={[styles.circleButtonTitle, { color: textColor }]}>
-                            {'\uf303'}
+                            {this.props.children}
                         </Text>
                     ) : null
                 }
