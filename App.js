@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Appbar from './src/components/Appbar';
-import MemoDetailScreen from './src/screens/MemoDetailScreen';
+i:port MemoDetailScreen from './src/screens/MemoDetailScreen';
 
 export default class App extends React.Component {
   render() {
