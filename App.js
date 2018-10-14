@@ -4,7 +4,16 @@ import MemoListScreen from './src/screens/MemoListScreen';
 
 const App = createStackNavigator({
     Home: {
-        screen: MemoListScreen
+        screen: MemoListScreen,
+        navigationOptions: () => ({
+            headerTitle: 'MEMODASU',
+            headerStyle: {
+                backgroundColor: '#BBB',
+            },
+            headerTitleStyle: {
+                color: '#fff',
+            },
+        }),
     },
 });
 
