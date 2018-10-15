@@ -6,9 +6,6 @@ class LoginScreen extends React.Component {
         email: '',
         password: '',
     }
-    handleChangeText(text) {
-        this.setState({email: text})
-    }
     render() {
         return (
             <View style={styles.container}>
@@ -17,11 +14,19 @@ class LoginScreen extends React.Component {
                 </Text>
                 <TextInput
                     value={this.state.email}
-                    onChangeText={this.handleChangeText.bind(this)}
+                    onChangeText={(text) => { this.setState({email: text}); }}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Email Address"
                     style={styles.imput}
                 />
                 <TextInput
                     value={this.state.password}
+                    onChangeText={(text) => { this.setState({password: text}); }}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder="Password"
+                    secureTextEntry={true}
                     style={styles.imput}
                 />
                 <TouchableHighlight  onPress={()=>{this.props.navigation.navigate('Home');}} style={styles.button} >
