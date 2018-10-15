@@ -6,6 +6,10 @@ class LoginScreen extends React.Component {
         email: '',
         password: '',
     }
+    handleSubmit() {
+        // this.props.navigation.navigate('Home')
+        // Log in!!
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -29,7 +33,7 @@ class LoginScreen extends React.Component {
                     secureTextEntry={true}
                     style={styles.imput}
                 />
-                <TouchableHighlight  onPress={()=>{this.props.navigation.navigate('Home');}} style={styles.button} >
+                <TouchableHighlight  onPress={this.handleSubmit.bind(this)} style={styles.button} >
                     <Text style={styles.buttonTitle}>ログインする</Text>
                 </TouchableHighlight>
             </View>
