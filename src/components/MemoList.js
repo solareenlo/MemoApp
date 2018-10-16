@@ -1,25 +1,22 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
 
 class MemoList extends React.Component {
-    renderMemo(memo) {
+    renderMemo({ item }) {
+        console.log(item);
         return (
             <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail')}}>
                 <View style={styles.memoListItem}>
-                    <Text style={styles.memoTitle}>{memo.body}</Text>
+                    <Text style={styles.memoTitle}>{item.body}</Text>
                     <Text style={styles.memoDate}>2018.10.10</Text>
                 </View>
             </TouchableHighlight>
         );
     }
     render() {
-        const list = [];
-        this.props.memoList.forEach((memo) => {
-            list.push(this.renderMemo(memo));
-        });
         return (
             <View style={styles.memoList}>
-                {list}
+                <FlatList data={this.props.memoList} renderItem={this.renderMemo} />
             </View>
         );
     }

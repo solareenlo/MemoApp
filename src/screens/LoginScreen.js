@@ -4,8 +4,8 @@ import firebase from 'firebase';
 
 class LoginScreen extends React.Component {
     state = {
-        email: '',
-        password: '',
+        email: 'test@example.com',
+        password: 'password',
     }
     handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
