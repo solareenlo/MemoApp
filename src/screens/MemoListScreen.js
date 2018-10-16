@@ -7,10 +7,19 @@ import CircleButton from '../elements/CircleButton';
 
 class MemoListScreen extends React.Component {
     componentWillMount() {
-        const firestore = firebase.firestore();
-        firestore.settings({ timestampsInSnapshots: true });
+        const db = firebase.firestore();
+        db.settings({ timestampsInSnapshots: true });
         const { currentUser } = firebase.auth();
-        firestore.collection(`users/${currentUser.uid}/memos`);
+        db.collection(`users/${currentUser.uid}/memos`)
+            .get()
+            .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                    console.log(doc);
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
     handlePress() {
         this.props.navigation.navigate('MemoCreate');
