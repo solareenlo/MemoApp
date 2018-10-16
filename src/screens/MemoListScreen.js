@@ -1,30 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import firebase from 'firebase';
 
 import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
 
-//this.props.navigation.navigate('MemoEdit');
-
 class MemoListScreen extends React.Component {
     handlePress() {
-        const { params } = this.props.navigation.state;
-        console.log(params);
-        const db = firebase.firestore();
-        db.settings({
-            timestampsInSnapshots: true
-        });
-        db.collection(`users/${params.currentUser.user.uid}/memos`).add({
-            body: 'Hello World!',
-            createdOn: '2018.10.10',
-        })
-            .then((docRef) => {
-                console.log(docRef.id);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        const { params} = this.props.navigation.state;
+        this.props.navigation.navigate('MemoCreate', {currentUser: params.currentUser});
     }
     render() {
         return (
