@@ -4,19 +4,27 @@ import { StyleSheet, View, Text} from 'react-native';
 import CircleButton from '../elements/CircleButton';
 
 class MemoDetailScreen extends React.Component {
+    state = {
+        memo: {},
+    }
+    componentWillMount() {
+        const { params } = this.props.navigation.state;
+        this.setState({ memo: params.memo});
+    }
     render() {
+        const { memo } = this.state;
         return (
             <View style={styles.container}>
                 <View style={styles.memoHeader}>
                     <View>
-                        <Text style={styles.memoHeaderTitle}>アプリのアイディア</Text>
-                        <Text style={styles.memoHeaderDate}>2018.10.10</Text>
+                        <Text style={styles.memoHeaderTitle}>{memo.body}</Text>
+                        <Text style={styles.memoHeaderDate}>{String(memo.createdOn)}</Text>
                     </View>
                 </View>
 
                 <View style={styles.memoContent}>
                     <Text>
-                        これはスマホアプリのアイディアです。
+                        {memo.body}
                     </Text>
                 </View>
 
