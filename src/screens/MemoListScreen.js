@@ -13,7 +13,8 @@ class MemoListScreen extends React.Component {
         db.settings({
             timestampsInSnapshots: true
         });
-        db.collection('memos').add({
+        const uid = 'ここにFirebaseのユーザーのユーザーIDを入力';
+        db.collection(`users/${uid}/memos`).add({
             body: 'test_memo',
             createdOn: '2018.10.10',
         })
