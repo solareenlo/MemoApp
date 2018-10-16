@@ -9,13 +9,14 @@ import CircleButton from '../elements/CircleButton';
 
 class MemoListScreen extends React.Component {
     handlePress() {
+        const { params } = this.props.navigation.state;
+        console.log(params);
         const db = firebase.firestore();
         db.settings({
             timestampsInSnapshots: true
         });
-        const uid = 'ここにFirebaseのユーザーのユーザーIDを入力';
-        db.collection(`users/${uid}/memos`).add({
-            body: 'test_memo',
+        db.collection(`users/${params.currentUser.user.uid}/memos`).add({
+            body: 'Hello World!',
             createdOn: '2018.10.10',
         })
             .then((docRef) => {
