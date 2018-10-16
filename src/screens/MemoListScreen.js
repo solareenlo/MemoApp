@@ -6,6 +6,9 @@ import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
 
 class MemoListScreen extends React.Component {
+    state = {
+        memoList: [],
+    }
     componentWillMount() {
         const db = firebase.firestore();
         db.settings({ timestampsInSnapshots: true });
@@ -13,9 +16,11 @@ class MemoListScreen extends React.Component {
         db.collection(`users/${currentUser.uid}/memos`)
             .get()
             .then((snapshot) => {
+                const tempList = [];
                 snapshot.forEach((doc) => {
-                    console.log(doc);
-                })
+                    tempList.push(doc.data());
+                });
+                this.setState({ memoList: tempList })
             })
             .catch((error) => {
                 console.log(error);
@@ -27,7 +32,7 @@ class MemoListScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <MemoList navigation={this.props.navigation}/>
+                <MemoList memoList={this.state.memoList} navigation={this.props.navigation}/>
                 <CircleButton onPress={this.handlePress.bind(this)}>
                     {'\uf067'}
                 </CircleButton>
