@@ -15,7 +15,12 @@ class MemoEditScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <TextInput style={styles.memoEditInput} multiline value={this.state.memo.body} />
+                <TextInput
+                    style={styles.memoEditInput}
+                    multiline
+                    value={this.state.memo.body}
+                    onChangeText={(text) => { this.setState({ memo: {body: text } }); }}
+                />
                 <CircleButton onPress={()=>{this.props.navigation.goBack();}}>
                     {'\uf00c'}
                 </CircleButton>
