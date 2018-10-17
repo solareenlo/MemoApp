@@ -5,21 +5,26 @@ import firebase from 'firebase';
 
 class MemoEditScreen extends React.Component {
     state = {
-        memo: {},
+        body: '',
+        key: '',
     }
 
     componentWillMount() {
         const { params } = this.props.navigation.state;
-        this.setState({ memo: params.memo });
+        this.setState({
+            body: params.memo.body,
+            key: params.memo.key
+        });
     }
 
     handlePress() {
         console.log('pressed');
         const { currentUser } = firebase.auth();
         const db = firebase.firestore();
-        db.collection(`users/${currentUser.uid}/memos`).doc(this.state.memo.key)
+        console.log(this.state);
+        db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key)
             .update({
-                body: this.state.memo.body,
+                body: this.state.body,
             })
             .then(() => {
                 console.log('success!');
@@ -35,10 +40,10 @@ class MemoEditScreen extends React.Component {
                 <TextInput
                     style={styles.memoEditInput}
                     multiline
-                    value={this.state.memo.body}
-                    onChangeText={(text) => { this.setState({ memo: {body: text } }); }}
+                    value={this.state.body}
+                    onChangeText={(text) => { this.setState({ body: text }); }}
                 />
-                <CircleButton onPress={()=>{this.handlePress.bind(this);}}>
+                <CircleButton onPress={this.handlePress.bind(this)}>
                     {'\uf00c'}
                 </CircleButton>
             </View>
