@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import CircleButton from '../elements/CircleButton';
+import firebase from 'firebase';
 
 class MemoEditScreen extends React.Component {
     state = {
@@ -12,6 +13,22 @@ class MemoEditScreen extends React.Component {
         this.setState({ memo: params.memo });
     }
 
+    handlePress() {
+        console.log('pressed');
+        const { currentUser } = firebase.auth();
+        const db = firebase.firestore();
+        db.collection(`users/${currentUser.uid}/memos`).doc(this.state.memo.key)
+            .update({
+                body: this.state.memo.body,
+            })
+            .then(() => {
+                console.log('success!');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -21,7 +38,7 @@ class MemoEditScreen extends React.Component {
                     value={this.state.memo.body}
                     onChangeText={(text) => { this.setState({ memo: {body: text } }); }}
                 />
-                <CircleButton onPress={()=>{this.props.navigation.goBack();}}>
+                <CircleButton onPress={()=>{this.handlePress.bind(this);}}>
                     {'\uf00c'}
                 </CircleButton>
             </View>
