@@ -1,4 +1,5 @@
 import React from 'react';
+import Expo from 'expo';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import { StackActions, NavigationActions } from 'react-navigation';
@@ -11,6 +12,8 @@ class LoginScreen extends React.Component {
     handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => {
+                Expo.SecureStore.setItemAsync('email', this.state.email);
+                Expo.SecureStore.setItemAsync('password', this.state.password);
                 const resetAction = StackActions.reset({
                     index: 0,
                     actions: [
