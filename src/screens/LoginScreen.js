@@ -9,18 +9,33 @@ class LoginScreen extends React.Component {
         email: '',
         password: '',
     }
+
+    async componentDidMount() {
+        const email = await Expo.SecureStore.getItemAsync('email');
+        const password = await Expo.SecureStore.getItemAsync('password');
+        console.log(email, password);
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                this.navigateToHome();
+            });
+    }
+
+    navigateToHome() {
+        const resetAction = StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'Home' }),
+            ],
+        });
+        this.props.navigation.dispatch(resetAction);
+    }
+
     handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => {
                 Expo.SecureStore.setItemAsync('email', this.state.email);
                 Expo.SecureStore.setItemAsync('password', this.state.password);
-                const resetAction = StackActions.reset({
-                    index: 0,
-                    actions: [
-                        NavigationActions.navigate({ routeName: 'Home' }),
-                    ],
-                });
-                this.props.navigation.dispatch(resetAction);
+                this.navigateToHome();
             })
             .catch(() => {
             });
