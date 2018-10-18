@@ -3,6 +3,7 @@ import Expo from 'expo';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import { StackActions, NavigationActions } from 'react-navigation';
+import Loading from '../elements/Loading';
 
 class LoginScreen extends React.Component {
     state = {
@@ -13,11 +14,10 @@ class LoginScreen extends React.Component {
     async componentDidMount() {
         const email = await Expo.SecureStore.getItemAsync('email');
         const password = await Expo.SecureStore.getItemAsync('password');
-        console.log(email, password);
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(() => {
-                this.navigateToHome();
-            });
+        // firebase.auth().signInWithEmailAndPassword(email, password)
+        //     .then(() => {
+        //         this.navigateToHome();
+        //     });
     }
 
     navigateToHome() {
@@ -48,6 +48,7 @@ class LoginScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <Loading text="ログイン中" ifLoading={true} />
                 <Text style={styles.title}>
                     ログイン
                 </Text>
