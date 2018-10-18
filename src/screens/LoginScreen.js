@@ -40,6 +40,7 @@ class LoginScreen extends React.Component {
                     autoCorrect={false}
                     placeholder="Email Address"
                     style={styles.imput}
+                    underlineColorAndroid="transparent"
                 />
                 <TextInput
                     value={this.state.password}
@@ -49,6 +50,7 @@ class LoginScreen extends React.Component {
                     placeholder="Password"
                     secureTextEntry={true}
                     style={styles.imput}
+                    underlineColorAndroid="transparent"
                 />
                 <TouchableHighlight
                     onPress={this.handleSubmit.bind(this)}

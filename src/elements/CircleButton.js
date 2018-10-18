@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.9,
         shadowRadius: 3,
         zIndex: 10,
+        elevation: 4,
+        margin: 1,
     },
     circleButtonTitle: {
         fontFamily: 'FontAwesome',
