@@ -5,8 +5,8 @@ import { StackActions, NavigationActions } from 'react-navigation';
 
 class LoginScreen extends React.Component {
     state = {
-        email: 'test@example.com',
-        password: 'password',
+        email: '',
+        password: '',
     }
     handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
