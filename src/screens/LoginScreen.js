@@ -9,15 +9,18 @@ class LoginScreen extends React.Component {
     state = {
         email: '',
         password: '',
+        ifLoading: true,
     }
 
     async componentDidMount() {
         const email = await Expo.SecureStore.getItemAsync('email');
         const password = await Expo.SecureStore.getItemAsync('password');
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        //     .then(() => {
-        //         this.navigateToHome();
-        //     });
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                this.setState({ ifLoading: false });
+                this.navigateToHome();
+            })
+            .catch();
     }
 
     navigateToHome() {
@@ -48,7 +51,7 @@ class LoginScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Loading text="ログイン中" ifLoading={true} />
+                <Loading text="ログイン中" ifLoading={this.state.ifLoading} />
                 <Text style={styles.title}>
                     ログイン
                 </Text>
