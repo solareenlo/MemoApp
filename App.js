@@ -37,6 +37,10 @@ const App = createStackNavigator({
         headerBackTitle: null,
         headerStyle: {
             backgroundColor: '#BBB',
+            shadowColor: '#000',
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.4,
+            shadowRadius: 3,
             ...Platform.select({
                 android: {
                     height: 80,
